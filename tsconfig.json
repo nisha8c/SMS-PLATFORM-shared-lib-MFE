@@ -4,7 +4,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "tailwindcss": ["node_modules/tailwindcss/dist/lib.d.mts"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
