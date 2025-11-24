@@ -1,5 +1,4 @@
 import {type ReactNode, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 //import logo from '@/assets/react.svg';
 import { useTranslation } from 'react-i18next';
 import {
@@ -130,12 +129,14 @@ export const AppLayout = ({ children, pathname, navigate }: AppLayoutProps) => {
                                         const isActive = pathname?.startsWith(item.path)
 
                                         return (
-                                            <Link
+                                            <Button
                                                 key={item.path}
-                                                to={item.path}
-                                                onClick={() => setMobileMenuOpen(false)}
+                                                onClick={() => {
+                                                    navigate?.(item.path);
+                                                    setMobileMenuOpen(false);
+                                                }}
                                                 className={cn(
-                                                    'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300',
+                                                    'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 w-full text-left',
                                                     isActive
                                                         ? 'bg-primary/20 text-primary glow-primary'
                                                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -143,7 +144,8 @@ export const AppLayout = ({ children, pathname, navigate }: AppLayoutProps) => {
                                             >
                                                 <Icon className="h-5 w-5" />
                                                 <span className="font-medium">{t(item.labelKey)}</span>
-                                            </Link>
+                                            </Button>
+
                                         );
                                     })}
                                 </nav>
@@ -151,12 +153,14 @@ export const AppLayout = ({ children, pathname, navigate }: AppLayoutProps) => {
                         </Sheet>
 
                         <div className="flex items-center gap-2">
-                            <img
-                                //src={customLogo || logo}
-                                src={customLogo || null}
-                                alt={t('common.appName')}
-                                className="h-8 w-8 md:h-10 md:w-10 object-contain"
-                            />
+                            {customLogo ? (
+                                <img
+                                    src={customLogo}
+                                    alt={t('common.appName')}
+                                    className="h-8 w-8 md:h-10 md:w-10 object-contain"
+                                />
+                            ) : null}
+
                             <h1 className="hidden sm:block text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                                 {t('common.appName')}
                             </h1>
@@ -249,12 +253,14 @@ export const AppLayout = ({ children, pathname, navigate }: AppLayoutProps) => {
                                     <User className="h-4 w-4 mr-2" />
                                     {user?.name}
                                 </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/profile" className="cursor-pointer">
-                                        <Settings className="h-4 w-4 mr-2" />
-                                        {t('auth.myProfile')}
-                                    </Link>
+                                <DropdownMenuItem
+                                    onClick={() => navigate?.('/profile')}
+                                    className="cursor-pointer"
+                                >
+                                    <Settings className="h-4 w-4 mr-2" />
+                                    {t('auth.myProfile')}
                                 </DropdownMenuItem>
+
                                 <DropdownMenuItem onClick={logout} className="cursor-pointer">
                                     <LogOut className="h-4 w-4 mr-2" />
                                     {t('auth.logout')}
