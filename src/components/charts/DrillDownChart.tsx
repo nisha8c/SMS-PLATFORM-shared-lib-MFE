@@ -4,8 +4,8 @@ import {type ReactElement, type ReactNode, useState} from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import {Card, CardContent, CardHeader, CardTitle} from "../ui/card.tsx";
-import {Button} from "../ui/button.tsx";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
 
 type DrillLevel = 'year' | 'month' | 'day';
 

@@ -7,7 +7,7 @@ import {
     DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Button } from './ui/button';
-import {languages} from "../i18n/config.ts";
+import {languages} from "@/i18n/config";
 
 export const LanguageSelector = () => {
     const { i18n } = useTranslation();

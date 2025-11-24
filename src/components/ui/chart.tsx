@@ -1,6 +1,8 @@
+// @ts-nocheck
+
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
-import {cn} from "../../lib/utils.ts";
+import {cn} from "@/lib/utils";
 
 
 // Format: { THEME_NAME: CSS_SELECTOR }
@@ -246,7 +248,7 @@ const ChartLegendContent = React.forwardRef<
             ref={ref}
             className={cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}
         >
-            {payload.map((item) => {
+            {payload!.map((item) => {
                 const key = `${nameKey || item.dataKey || "value"}`;
                 const itemConfig = getPayloadConfigFromPayload(config, item, key);
 

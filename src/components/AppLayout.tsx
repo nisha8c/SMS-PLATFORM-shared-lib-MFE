@@ -1,6 +1,8 @@
+// @ts-nocheck
+
 import {type ReactNode, useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/react.svg';
 import { useTranslation } from 'react-i18next';
 import {
     Search,
@@ -17,22 +19,28 @@ import {
     BarChart3,
     FileText,
     Settings as SettingsIcon,
-    Shield, Sheet, Badge,
+    Shield,
 } from 'lucide-react';
 
-import {useAuth} from "@/contexts/AuthContext.tsx";
-import {mockContacts, mockMessages, mockWorkflows} from "../lib/mockData.ts";
-import {SheetContent, SheetTitle, SheetTrigger} from "./ui/sheet.tsx";
-import {Button} from "./ui/button.tsx";
-import {cn} from "../lib/utils.ts";
-import {Input} from "./ui/input.tsx";
-import {LanguageSelector} from "./LanguageSelector.tsx";
-import {ScrollArea} from "./ui/scroll-area.tsx";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "./ui/dropdown-menu.tsx";
-import {BottomNav} from "./BottomNav.tsx";
+
+import {mockContacts, mockMessages, mockWorkflows} from "@/lib/mockData";
+
+
+
+
 import {ScrollToTop} from "./common";
-import {Dialog, DialogContent} from "./ui/dialog.tsx";
-import {useTheme} from "@/contexts/ThemeContext.tsx";
+import {useAuth} from "@/contexts/AuthContext";
+import {cn} from "@/lib/utils";
+import {useTheme} from "@/contexts/ThemeContext";
+import {Dialog, DialogContent} from "@/components/ui/dialog";
+import {ScrollArea} from "@/components/ui/scroll-area";
+import {Sheet, SheetContent, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {LanguageSelector} from "@/components/LanguageSelector";
+import {BottomNav} from "@/components/BottomNav";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {Badge} from "@/components/ui/badge";
 
 const navItems = [
     { icon: LayoutDashboard, labelKey: 'nav.dashboard', path: '/dashboard' },

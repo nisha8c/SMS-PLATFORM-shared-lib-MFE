@@ -2,11 +2,11 @@ import {Search, Filter, Badge} from 'lucide-react';
 
 import { useState } from 'react';
 import type {SearchFilterProps} from "../../types";
-import {Input} from "../ui/input.tsx";
-import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "../ui/dialog.tsx";
-import {Button} from "../ui/button.tsx";
-import {Checkbox} from "../ui/checkbox.tsx";
-import {Label} from "../ui/label.tsx";
+import {Input} from "@/components/ui/input";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
+import {Button} from "@/components/ui/button";
+import {Checkbox} from "@/components/ui/checkbox";
+import {Label} from "@/components/ui/label";
 
 export function SearchFilter({
                                  searchValue,

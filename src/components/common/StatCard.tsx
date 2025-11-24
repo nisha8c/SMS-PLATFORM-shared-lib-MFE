@@ -1,6 +1,7 @@
-import {Card, CardContent, CardHeader, CardTitle} from "../ui/card.tsx";
-import {cn} from "../../lib/utils.ts";
+
+import {cn} from "@/lib/utils";
 import type {StatCardProps} from "../../types";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 
 
 export function StatCard({ title, value, change, icon: Icon, color = 'text-primary' }: StatCardProps) {
