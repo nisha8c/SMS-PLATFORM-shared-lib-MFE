@@ -1,7 +1,32 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+
+import path from "path";
+
 export default defineConfig({
-  plugins: [react()],
-})
+    plugins: [react()],
+    build: {
+        lib: {
+            entry: path.resolve(__dirname, "src/index.ts"),
+            name: "shared-lib",
+            fileName: "index",
+            formats: ["es", "cjs"],
+        },
+        rollupOptions: {
+            external: ["react", "react-dom"],
+            output: {
+                globals: {
+                    react: "React",
+                    "react-dom": "ReactDOM",
+                },
+            },
+        },
+    },
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "src"),
+        },
+    },
+});
+
