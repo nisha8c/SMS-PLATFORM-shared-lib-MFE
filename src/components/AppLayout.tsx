@@ -1,5 +1,5 @@
 import {type ReactNode, useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import logo from '@/assets/react.svg';
 import { useTranslation } from 'react-i18next';
 import {
@@ -54,12 +54,12 @@ const navItems = [
 
 interface AppLayoutProps {
     children: ReactNode;
+    pathname?: string;
+    navigate?: (path: string) => void;
 }
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export const AppLayout = ({ children, pathname, navigate }: AppLayoutProps) => {
     const { user, logout } = useAuth();
-    const location = useLocation();
-    const navigate = useNavigate();
     const { customLogo } = useTheme();
     const { t } = useTranslation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -127,7 +127,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                                 <nav className="p-4 space-y-1">
                                     {navItems.map((item) => {
                                         const Icon = item.icon;
-                                        const isActive = location.pathname.startsWith(item.path);
+                                        const isActive = pathname?.startsWith(item.path)
 
                                         return (
                                             <Link
@@ -153,7 +153,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                         <div className="flex items-center gap-2">
                             <img
                                 //src={customLogo || logo}
-                                src={customLogo || ''}
+                                src={customLogo || null}
                                 alt={t('common.appName')}
                                 className="h-8 w-8 md:h-10 md:w-10 object-contain"
                             />
@@ -271,7 +271,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             </main>
 
             {/* Bottom Navigation for Desktop/Tablet */}
-            <BottomNav />
+            <BottomNav pathname={pathname} navigate={navigate} />
+
 
             {/* Scroll to Top Button */}
             <ScrollToTop />
@@ -310,7 +311,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                                                 <button
                                                     key={contact.id}
                                                     onClick={() => {
-                                                        navigate('/contacts');
+                                                        navigate?.('/contacts');
                                                         setSearchOpen(false);
                                                         setSearchQuery('');
                                                     }}
@@ -344,7 +345,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                                                 <button
                                                     key={workflow.id}
                                                     onClick={() => {
-                                                        navigate('/workflows');
+                                                        navigate?.('/workflows');
                                                         setSearchOpen(false);
                                                         setSearchQuery('');
                                                     }}
@@ -381,7 +382,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                                                     <button
                                                         key={message.id}
                                                         onClick={() => {
-                                                            navigate('/messages');
+                                                            navigate?.('/messages');
                                                             setSearchOpen(false);
                                                             setSearchQuery('');
                                                         }}
