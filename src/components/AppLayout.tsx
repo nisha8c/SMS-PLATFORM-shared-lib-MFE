@@ -1,8 +1,6 @@
-// @ts-nocheck
-
 import {type ReactNode, useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '@/assets/react.svg';
+//import logo from '@/assets/react.svg';
 import { useTranslation } from 'react-i18next';
 import {
     Search,
@@ -154,7 +152,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 
                         <div className="flex items-center gap-2">
                             <img
-                                src={customLogo || logo}
+                                //src={customLogo || logo}
+                                src={customLogo || ''}
                                 alt={t('common.appName')}
                                 className="h-8 w-8 md:h-10 md:w-10 object-contain"
                             />
