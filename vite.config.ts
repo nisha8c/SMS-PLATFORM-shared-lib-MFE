@@ -1,7 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
@@ -11,22 +9,21 @@ export default defineConfig({
             entry: path.resolve(__dirname, "src/index.ts"),
             name: "shared-lib",
             fileName: "index",
-            formats: ["es", "cjs"],
+            formats: ["es", "cjs"]
         },
         rollupOptions: {
             external: ["react", "react-dom"],
             output: {
                 globals: {
                     react: "React",
-                    "react-dom": "ReactDOM",
-                },
-            },
-        },
+                    "react-dom": "ReactDOM"
+                }
+            }
+        }
     },
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, "src"),
-        },
-    },
+            "@": path.resolve(__dirname, "src")
+        }
+    }
 });
-
